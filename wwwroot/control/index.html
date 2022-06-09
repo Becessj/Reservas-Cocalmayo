@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Control de reservas | Cocalmayo</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../reserva/plugins/sweetAlert2/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<style>
+    .format-pre pre {
+        background: #DD6B55;
+        color: #f7f7f7;
+        padding: 10px;
+        text-align: left;
+        font-size: 17px;
+        }
+        .format-pre ti {
+        background: #d80303;
+        color: #f7f7f7;
+        padding: 10px;
+        text-align: left;
+        font-size: 17px;
+        }
+        .btn-color{
+            background-color: #0e1c36;
+            color: #fff;
+            
+            }
+
+        .profile-image-pic{
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+        }
+
+
+
+        .cardbody-color{
+        background-color: #ebf2fa;
+        }
+
+        a{
+        text-decoration: none;
+        }
+        body{
+            background-image: url(img/cocalmayo.png.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    
+</style>
+<body>
+   
+    
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+              <form class="card-body cardbody-color p-lg-5">
+                <div class="text-center">
+                  <img src="img/download.jpg" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                    width="200px" alt="profile">
+                </div>
+                <h2 class="text-center text-dark mt-5">CONTROL DE ACCESO A POZAS</h2><br>
+                <div class="mb-3">
+                    <!-- <input id="reserva" class="form-control" style="font-weight:bold" type="text" maxlength="4" placeholder="Código" required> -->
+                    <input onkeypress="return soloNumeros(event)" type="text" class="form-control" style="font-weight:bold"  id="scanner" maxlength="4" placeholder="Escanea o digita el código" required>
+                </div>
+                   <br>
+                <div class="text-center">
+                  <button id="controlarreserva" type="button"  class="btn btn-primary" >CONTROLAR</button>
+                    <br><br>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">¿Quieres ir a reservar?<a href="http://reservascocalmayo.munisantateresa.gob.pe/reserva/" class="text-dark fw-bold"> Ir</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" charset="UTF-8"></script>
+    <script src="js/variables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="../reserva/vue/dist/vue.js"></script>
+    <script src="../reserva/vue/dist/vue-router.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/employee.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/initial.js"></script>
+    <script src="../reserva/plugins/sweetAlert2/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../reserva/plugins/sweetAlert2/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<head>
+
+
+
+</head>
+
+<script>
+
+</script>
+
+
+
+<body>
+
+    <div id = "app" class="container">
+        <h3 class="d-flex justify-content-center">
+            VUE JS
+        </h3>
+       
+            <template id="step1" v-if="currentStep == 1">
+              <h1>Step 1</h1>
+              
+              <div>
+                <input type="text" name="name" v-model="step1.name" placeholder="name">
+              </div>
+              <div>
+                <input type="text" name="email" v-model="step1.email" placeholder="email">
+              </div>
+              
+              <button type="button" @click.prevent="goToStep(2)">Continue</button>
+          </template>
+          <template id="step2" v-if="currentStep == 2">
+              <h1>Step 2</h1>
+              
+              <div>
+                <input type="text" name="city" v-model="step2.city" placeholder="city">
+              </div>
+              <div>
+                <input type="text" name="state" v-model="step2.state" placeholder="state">
+              </div>
+              
+              <button type="button" @click.prevent="goToStep(3)">Finish</button>
+          </template>
+          <template id="step3" v-if="currentStep == 3">
+            <strong>Name:</strong> {{ step1.name }}<br />
+            <strong>Email:</strong> {{ step1.email }}<br />
+            <strong>City:</strong> {{ step2.city }}<br />
+            <strong>State:</strong> {{ step2.state }}
+          </template>
+        
+
+    </div> 
+
+    <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+        
+    </nav>
+
+    <script scr="variables.js"></script>
+    <script scr="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script scr="app.js"></script>
+    <script scr="home.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
+
+

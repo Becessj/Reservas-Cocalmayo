@@ -1,0 +1,689 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Reserva de Pozas Aguas Termales | Cocalmayo</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+   <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.min.css">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="fonts/material-design-icons/material-icon.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"> 
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="plugins/material-datetimepicker/bootstrap-material-datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="css/material.min.css">
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- intentar ver cambios en la libreria -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+    <script src="vue/dist/vue.js"></script>
+    <script src="vue/dist/vue-router.js"></script>
+    <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/sweetAlert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />  
+   
+    
+
+</head>
+<style>
+    li{
+        font-size: 15px;
+        font-weight: bold;
+        color: black;
+    }
+    .responsive {
+        width: 100%;
+        height: auto;
+        }
+        @media screen and (max-width: 980px) {
+            div#imgpoza {
+            display: none;
+            }
+            div#ind{
+                display: none;
+            }
+            }
+
+</style>
+<body>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.0.0/polyfills.umd.js"></script>
+
+   <script src="https://smtpjs.com/v3/smtp.js">
+   </script>
+
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="booking-form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="formulario">
+                                <section id="first-section">
+                                    <div class="row">
+                                        <h5 style="font-weight: bold;">SELECCIONE LA FECHA DE VISITA Y LA CANTIDAD DE PERSONAS</h5>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <span class="form-label">Fecha de Visita</span>
+                                                <input style="font-weight:bold"  type="date" class="form-control bootstrap-material-datetimepicker" v-model="fecha" id="fecha" name="date">
+                                            
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <h5 style="font-weight: bold;">ADULTOS</h5>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Locales</span>
+                                                <input style="font-weight:bold" id="locales" class="form-control" type="number" min=0 value=0 required>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Nacionales</span>
+                                                <input style="font-weight:bold" id="nacionales" class="form-control" type="number" min=0 value=0 required>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Extranjeros</span>
+                                                <input style="font-weight:bold" id="extranjeros" class="form-control" type="number" min=0 value=0 required>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 style="font-weight: bold;">NIÑOS</h5>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Locales</span>
+                                                <input style="font-weight:bold" id="locales_n" class="form-control" type="number" min=0 value=0 required>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Nacionales</span>
+                                                <input style="font-weight:bold" id="nacionales_n" class="form-control" type="number" min=0 value=0 required>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <span class="form-label">Extranjeros</span>
+                                                <input style="font-weight:bold" id="extranjeros_n" class="form-control" type="number" min=0 value=0 required>
+                                                <span class="select-arrow"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-sm-6 col-md-4">
+                                            
+                                            <button style="font-weight: bold;" id="step1n" type="button" class="btn btn-primary" >Disponibilidad &nbsp;<i class="fas fa-search"></i></button>
+                                            
+                                        </div>
+                                    </div>
+                                     <!-- Grid row - mensajes-->
+                                     <div id="ind" class="row">
+                                        <div class="col-12">
+                                            <div class="msg-container my-2">
+                                                <ul class="fa-ul msg-text lh" >
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>El plazo de pago para la vigencia de la reserva es de 2 horas.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Son menores todos los visitantes que a la fecha de visita no hayan cumplido 18 a&ntilde;os.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>La presentación del DNI es obligatorio al ingreso al balneario de Cocalmayo.</li>
+                                                   <!-- <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Es considerado como usuario local con domicilio en el distrito de Santa Teresa, acreditado previa presentación del DNI.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Es considerado como usuario nacional con domicilio dentro del país, acreditado previa presentación del DNI.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Es considerado como usuario extranjero con domicilio fuera del pais, acreditado previa presentación del PASAPORTE.</li>-->
+                                                    
+                                                        <li class="categoria-2-gen d-none"><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Estudiantes de pregrado peruanos: Con el carn&eacute; universitario (SUNEDU) o de institutos pedag&oacute;gicos y tecnol&oacute;gicos (MINEDU) vigentes y originales, hasta los 25 a&ntilde;os.</li>
+                                                        <li class="categoria-2-gen d-none"><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Estudiantes de pregrado extranjeros y CAN: Con el carn&eacute; de estudiante original emitido por la universidad hasta los 25 a&ntilde;os, conteniendo lo siguiente: informaci&oacute;n de la universidad, informaci&oacute;n personal del estudiante, foto del estudiante y fecha de vigencia no mayor de un a&ntilde;o con relaci&oacute;n a la fecha de visita a Machupicchu.</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.Grid row - mensajes-->
+                                </section>
+                                <section id="second-section">
+                                    <div class="row">
+                                        
+                                        <div id="imgpoza" class="col-sm-5" style="text-align:center;">
+                                            <h5 style="font-weight: bold;">SELECCIONE UNA POZA</h5>
+                                            <div style="position: relative; height: 334px; width: 445px; padding: 0px;margin:auto;">
+
+                                                <img src="reserva.png" class="mapper" usemap="#image-map" id="gmipam_0_image" style="position: absolute; height: 334px; width: 445px; left: 0px; top: 0px;">
+                                                <canvas id="gmipam_0_canvas" height="334" width="445" style="height: 334px; width: 445px; position: absolute; left: 0px; top: 0px; opacity: 1;"></canvas>
+                                                <div id="Map_blind" class="blind_area" style="position: absolute; height: 334px; width: 445px; left: 0px; top: 0px;">
+                                                </div>
+                                                <img class="" src="reserva.png" alt="Monuments" width="445" height="334" usemap="#Map" id="gmipam_0" style="position: absolute; height: 334px; width: 445px; left: 0px; top: 0px; opacity: 0;">
+                                                <map name="Map" id="Map">
+                                                    <area onclick="abrirpoza1();" style="cursor:pointer;" class="mapper showcoords noborder iopacity80 icolor297D76" target="" alt="Poza 1" data-toggle="tooltip" data-html="true" title="POZA 1&#10;Más información" coords="186,244,180,252,180,258,189,266,197,269,204,269,213,273,224,273,233,276,244,276,256,276,272,274,284,270,296,264,309,262,322,256,333,253,344,252,362,252,373,246,387,242,387,230,376,225,369,213,371,201,361,195,350,194,337,192,325,192,311,191,292,191,273,193,259,198,245,200,228,198,218,198,208,198,191,199,181,206,174,206,165,206,155,206,143,209,131,212,129,218,139,220,148,220,159,220,166,220,174,222,180,226,186,232" shape="poly" onmouseover="setAreaOver(this,'gmipam_0_canvas','0,0,0','0,0,0','0.33',0,0,0);null" onmouseout="setAreaOut(this,'gmipam_0_canvas',0,0);null">
+                                                    <area onclick="abrirpoza2();" style="cursor:pointer;" class="mapper showcoords noborder iopacity80 icolor297D76" target="" alt="Poza 2" data-toggle="tooltip" data-html="true" title="POZA 2&#10;Más información" coords="71,188,86,188,97,188,110,186,125,186,137,186,165,186,183,179,205,179,219,179,235,179,253,176,261,174,244,159,230,148,217,138,207,134,193,130,174,130,154,130,132,130,112,130,94,131,80,134,70,134,68,147,65,160,63,174,59,183,64,188" shape="poly" onmouseover="setAreaOver(this,'gmipam_0_canvas','0,0,0','0,0,0','0.33',0,0,0);null" onmouseout="setAreaOut(this,'gmipam_0_canvas',0,0);null">
+                                                    <area onclick="abrirpoza3();" style="cursor:pointer;" class="mapper showcoords noborder iopacity80 icolor297D76" target="" alt="Poza 3" data-toggle="tooltip" data-html="true" title="POZA 3&#10;Más información" coords="56,122,67,121,85,121,100,121,113,120,124,120,142,120,160,120,170,120,179,120,190,118,200,117,213,115,220,110,208,101,207,91,220,89,215,79,200,79,187,82,170,82,153,82,138,82,121,82,105,84,90,84,71,84,59,84,45,84,31,84,33,100,37,111,42,116,48,124" shape="poly" onmouseover="setAreaOver(this,'gmipam_0_canvas','0,0,0','0,0,0','0.33',0,0,0);null" onmouseout="setAreaOut(this,'gmipam_0_canvas',0,0);null">
+                                                    <area onclick="abrirpoza4();" style="cursor:pointer;" class="mapper showcoords noborder iopacity80 icolor297D76" target="" alt="Poza 4" data-toggle="tooltip" data-html="true" title="POZA 4&#10;Más información" coords="135,76,147,75,155,74,161,74,168,74,176,74,182,74,190,74,198,74,205,74,214,76,222,77,232,80,248,80,265,79,277,79,292,74,291,65,266,63,251,61,237,59,219,55,203,55,183,55,167,53,151,53,136,57,122,61,103,64,91,65,86,72,98,71,106,73,114,73,122,77" shape="poly" onmouseover="setAreaOver(this,'gmipam_0_canvas','0,0,0','0,0,0','0.33',0,0,0);null" onmouseout="setAreaOut(this,'gmipam_0_canvas',0,0);null">
+                                                </map>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <div class="form-group">
+                                                <h5 style="color: black; font-weight: bold; font-size: 25px;">INFORMACIÓN DE LA RESERVA</h5>
+                                                <span class="form-label" style="color: black; font-weight: bold;">Fecha de Visita</span>
+                                                <input style="font-weight:bold" type="date" class="form-control bootstrap-material-datetimepicker" v-model="form.fecha"  id="fechavisita" value="form.fecha" name="date" required >
+                                                <!--<input id="fechavisita" v-model="form.fecha" class="form-control" type="date" value="form.fecha" required>-->
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="form-label" style="color: black; font-weight: bold;">Horario de Visita</span>
+                                                <div id="horario" style="font-weight: bold;">
+                                                    {{ horarios }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="color: black;">
+                                                <!--<h5 style="color: black; font-weight: bold;">INFORMACIÓN DE RESERVA</h6>-->
+                                                <span class="form-label" style="display:inline; font-weight: bold;">Fecha y Hora de Visita: </span><span id="labelfechavisita" class="form-label" style="display:inline;color:red;">Seleccione Hora de Visita</span><br>
+                                                <span class="form-label" style="display:inline;">Poza Seleccionada: </span><span id="pozaseleccionada" class="form-label" style="display:inline;color:red;">Seleccione una Poza</span><br>
+                                                <span class="form-label" style="display:inline;">Cantidad de Visitantes (Adultos): </span><span id="cantidadvisitantesA" class="form-label" style="display:inline;"></span><br>
+                                                <span class="form-label" style="display:inline;">Cantidad de Visitantes (Niños): </span><span id="cantidadvisitantesN" class="form-label" style="display:inline;"></span><br>
+                                                <span class="form-label" style="display:inline;">Total: </span><span id="total" class="form-label" style="display:inline;"></span>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <button id="step2p" type="button" class="btn btn-primary">Atrás</button>
+                                                <button id="step2n" type="button" class="btn btn-primary">Siguiente</button>
+                                            </div>
+    
+                                            <!--<div class="col-sm-6" style="float:right;">
+                                                <button id="step2n" type="button" class="btn btn-primary">Siguiente</button>
+                                            </div>-->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h5 style="font-weight: bold; font-size: 25px;">DISPONIBILIDAD DE POZAS</h5>
+                                                <div id="tablahorario">
+                                                    {{ tablahorarios}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        
+                                    </div>
+                                </section>
+                                <section id="third-section">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h5 style="font-weight: bold;font-size: 18px;">INGRESE SUS DATOS PERSONALES PARA GENERAR EL PEDIDO</h5>
+                                            <div class="form-group">
+                                                <span class="form-label">Nombre</span>
+                                                <input id="nombre" v-model="form.nombres" class="form-control" style="font-weight:bold" type="text" maxlength="250" onkeypress="return soloLetras(event)" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="form-label">Apellidos</span>
+                                                <input id="apellidos" v-model="form.apellidos" class="form-control" style="font-weight:bold" type="text" maxlength="250" onkeypress="return soloLetras(event)" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="form-label">Tipo de Documento</span>
+                                                <select style="font-weight:bold" id="tipodocumento" class="form-control" aria-label="Tipo de Documento">
+                                                    <option value="0" selected>Seleccione tipo de Documento</option>
+                                                    <option value="1">DNI</option>
+                                                    <option value="2">RUC</option>
+                                                    <option value="3">Carnet de Extranjería</option>
+                                                    <option value="4">Pasaporte</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="form-label">Nro. Documento</span>
+                                                <input id="nrodocumento" v-model="form.documento" style="font-weight:bold" onkeypress="return soloNumeros(event)" class="form-control" type="number" maxlength="250" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <span class="form-label">Correo</span>
+                                                <input type="email" id="correo" v-model="form.correo" style="font-weight:bold" class="form-control" onkeypress="return soloNumerosyletras(event)"  maxlength="250" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group clearfix">
+                                              <div class="icheck-warning d-inline" >
+                                                <input style="font-weight:bold" type="checkbox" onclick="checkreservation()" id="checkaceptar">
+                                                <label for="checkaceptar" style="text-align: justify;">
+                                                  <h5 style="font-weight: bold;">El presente tiene caracter de Declaración jurada, en caso de producirse fraude o falsedad, me someto a las sanciones que contempla la LEY. </h5> </label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group clearfix">
+                                              <div class="icheck-warning d-inline" style="font-weight: bold;">
+                                                <input style="font-weight:bold" type="checkbox" onclick="checkreservation2()" id="checkaceptar2">
+                                                <label for="checkaceptar2" style="text-align: justify;">
+                                                  <h5 style="font-weight: bold;">Condiciones y recomendaciones.</h5>
+                                                </label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <div class="form-group clearfix">
+                                                <label for="checkaceptar2" style="text-align: justify;">
+                                                  <h5 style="font-weight: bold;color: black;"> <a href="http://guamanpoma.org/download/2721/"><i class="fas fa-download"></i>&nbsp;&nbsp;Descargar Declaración Jurada</a></h5>
+                                                </label>
+                                            </div>
+                                          </div>
+                                         
+                                        <div id="row">
+                                            <div class="col-sm-9">
+                                                <button id="step3p" type="button" class="btn btn-primary ">Atrás</button>
+                                                <button id="step3n" type="button" class="btn btn-primary " style="float:right;">Siguiente</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                      
+                                </section>
+                                <section id="fourth-section">
+                                    <!--CHECKOUT RESERVA-->
+                                    
+                                    <main role="main" class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th><h2><i class="fas fa-info-circle"></i>&nbsp;<b>Resumen de reserva</b> </h2></th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><i class="far fa-calendar-check"></i>&nbsp;&nbsp;Fecha de visita:</td>
+                                                                <td><span id="resumenfecha" class="form-label" style="display:inline;"></span></td>
+                                                               
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-clock"></i>&nbsp;&nbsp;Hora de visita:</td>
+                                                                <td><span id="resumenhorario" class="form-label" style="display:inline;"></span></td>
+                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-swimming-pool"></i>&nbsp;&nbsp;Poza:</td>
+                                                                <td><span id="resumenpoza" class="form-label" style="display:inline;"></span></td>
+                                                               
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-users"></i>&nbsp;&nbsp;Nro Documento:</td>
+                                                                <td><span id="resumentipodoc" class="form-label" style="display:inline;"></span></td>
+                                                                
+                                                              
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-users"></i>&nbsp;&nbsp;Nombres:</td>
+                                                                <td><span id="resumennombre" class="form-label" style="display:inline;"></td>
+                                                               
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-users"></i>&nbsp;&nbsp;Apellidos:</td>
+                                                                <td><span id="resumenapellido" class="form-label" style="display:inline;"></span></td>
+                                                                
+                                                         
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-users"></i>&nbsp;&nbsp;Email:</td>
+                                                                <td><span id="resumencorreo" class="form-label" style="display:inline;"></span></td>
+                                                                
+                                                         
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </main>
+                                   
+                                          <!--tabla de visitantes-->
+                                        <main role="main" class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><strong>Visitantes</b> </th>
+                                                                    <th><strong></strong>CANTIDAD</th>
+                                                                   
+                                                                    <th><strong>TOTAL</strong></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>LOCAL (adultos):</td>
+                                                                    <td><span id="resumenlocal" class="form-label" style="display:inline;"></span></td>
+                                                                   
+                                                                    <td>&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>NACIONAL (adultos):</td>
+                                                                    <td><span id="resumennacional" class="form-label" style="display:inline;"></span></td>
+                                                                   
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>EXTRANJERO (adultos):</td>
+                                                                    <td><span id="resumenextranjero" class="form-label" style="display:inline;"></span></td>
+                                                                   
+                                                                    <td>&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>LOCAL (niños):</td>
+                                                                    <td><span id="resumenlocal_n" class="form-label" style="display:inline;"></span></td>
+                                                                   
+                                                                    <td>&nbsp;</td>
+                                                                  
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>NACIONAL (niños):</td>
+                                                                    <td><span id="resumennacional_n" class="form-label" style="display:inline;"></span></td>
+                                                                   
+                                                                    <td>&nbsp;</td>
+                                                                 
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>EXTRANJERO (niños):</td>
+                                                                    <td><span id="resumenextranjero_n" class="form-label" style="display:inline;"></span></td>
+                                                                   
+                                                                    <td></td>
+                                                             
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                  
+                                                                    <td>S/.<span id="resumentotal" class="form-label"></span>.00</td>
+                                                             
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </main>
+                                       
+                                        <div class="container">
+
+                                            <div class="row">
+                                              <div class="col">
+                                                <button id="step4p" type="button" class="btn btn-primary">Atrás</button>
+                                              </div>
+                                              <div class="col">
+                                                <button id="generarreserva" type="button" class="btn btn-primary">222</button>
+                                              </div>
+                                              <!-- <div class="col">
+                                                <button id="yourButtonId" type="button" class="btn btn-primary">send</button>
+                                              </div>  -->
+                                            </div>
+                                          </div>
+                                        <div class="row">
+                                            <div id="generarreserva">
+
+                                            </div>
+                                            <div id="app">
+
+                                            </div>
+                                            <div>
+                                                <img id="itf">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <!--Grid column-->
+                                    <!-- Indicaciones -->
+                                    <!-- <div class="col-12">
+                                        <br><br>
+                                        <h4 class="alert-heading"><i class="fab fa-readme"></i>&nbsp;&nbsp;Importante:</h4>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="font-weight-normal mb-1">CONDICIONES DE VISITA A COCALMAYO</p>
+                                                <hr class="my-1">
+                                                <ul class="fa-ul font-weight-normal font-small lh">
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>La compra del ticket implica la aceptación de las condiciones del reglamento de cocalmayo y protocolo de bioseguridad.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Hacer su reservación por internet o vía telefónica en las oficinas de turismo.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Los padres o jefes del grupo son estrictamente responsables de los menores de edad y personas de riesgo a su cargo.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Prohibido pasar de poza en poza. Se debe permanecer en la poza asignada.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Prohibido llevar alimentos y bebidas alcohólicas.</li>
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>El incumplimiento de las restricciones autoriza a ser retirados del balneario sin reembolso y sin derecho a reclamo.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <p class="font-weight-normal mb-1">RECOMENDACIONES</p>
+                                                <hr class="my-1">
+                                                <ul class="fa-ul font-weight-normal font-small lh">
+                                                    <li><span class="fa-li w-auto pr-3"><i class="fas fa-check-square"></i></span>Es necesario tomar una ducha posterior al uso de los baños termales en sus hogares o hospedajes.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </section>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tasks" style="display:none;">
+
+    </div>
+    <script>
+        function checkreservation(){
+            Swal.fire({
+            title: 'DECLARACIÓN JURADA ',
+            text: 'TITULO',
+            html: `Yo, `+document.getElementById("nombre").value+` `+document.getElementById("apellidos").value+` con D.N.I/C.E/pasaporte N°`+document.getElementById("nrodocumento").value+` , ante usted DECLARO BAJO JURAMENTO QUE:
+            <br><br>
+            <div>
+            <table border="1" border id="table"  align="center" >
+        <thead>
+            <tr>
+                <th>SIGNO/SINTOMAS</th>
+                <th> &nbsp;  &nbsp; </th>
+                <th> &nbsp;  &nbsp; </th>
+                <th>SI &nbsp;  &nbsp; </th>
+                <th>NO</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: left;">
+            <tr>
+                <td>1. Pérdida del sentido del olfato y del gusto</td>
+                <td>   &nbsp;  &nbsp;   </td>
+                <td>    &nbsp;  &nbsp;  </td>
+                <td>   &nbsp;  &nbsp;  </td>
+                <td ALIGN=CENTER>  X </td>
+            </tr>
+            <tr>
+                <td>2. Fiebre o sensación de alza térmica</td>
+                <td>   &nbsp;  &nbsp;   </td>
+                <td>    &nbsp;  &nbsp;  </td>
+                <td>   &nbsp;  &nbsp;   </td>
+                <td ALIGN=CENTER>  X </td>
+            </tr>
+            <tr>
+                <td>3. Dolor de garganta o musculares</td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td ALIGN=CENTER>X</td>
+            </tr>
+            <tr>
+                <td>4. Está tomando alguna medicación</td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td ALIGN=CENTER>X</td>
+            </tr>
+            <tr>
+                <td>5. Tos, estornudos o dificutad para respirar</td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td ALIGN=CENTER>X</td>
+            </tr>
+            <tr>
+                <td>6. Expectoración o flema amarilla o verdosa</td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td> &nbsp;  &nbsp; </td>
+                <td ALIGN=CENTER>X</td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+        <br>
+        <h5>CONOCIMIENTO Y ACEPTACIÓN DE RIESGOS</h5>
+        <div style="text-align:justify;">
+            Que he sido informado, tengo conocimiento y aceptado los riesgos de un posible contagio que implica el uso de los baños termales Cocalmayo.
+            Soy consciente que a pesar de las medidas de seguridad e implementación de protocolos COVID por la entidad prestadora de servicio que minimiza
+            mas no garantiza un eventual contagio. La presente es una aceptación de cumplimiento estricto de protocolo, así como el reglamento de uso de los
+            baños termales y nos sometemos a retiro sin derecho a rembolso en caso de incumplimiento y a sanciones de acuerdo ley.`,
+            footer: '<div style="text-align:center"><strong>Cada visitante deberá presentar esta DJ antes de ingresar<br><a href="http://guamanpoma.org/download/2721/" >DESCARGAR DECLARACION</a>',
+            //imageUrl: 'http://guamanpoma.org/wp-content/uploads/2021/09/check.png',
+            //imageWidth: 400,
+            //imageHeight: 200,
+            //imageAlt: 'Check Reservation',
+            })
+        }
+        function checkreservation2(){
+            Swal.fire({
+            title: 'CONDICIONES  DE USO  DEL SERVICIO EN COCALMAYO',
+            text: 'TITULO',
+            html: `<ol style="text-align:justify;">
+                <li>La compra de ticket de ingreso implica y aceptación expresa de las condiciones de visita y cumplimiento de protocolos de bioseguridad y reglamento.
+                <li>La división de turismo de MDST y administración de los baños termales no se responsabiliza por consecuencias de un incumplimiento, accidentes o cualquier otra eventualidad.
+                <li>Los padres o jefe del grupo son estrictos responsables del cuidado de los menores de edad y personas de riesgo a su cargo.
+                <li>Personas que presenten alguna patología o enfermedad contagiosa deberán declarar y contar con autorización médica. está terminantemente prohibido el ingreso con heridas abiertas.
+                <li>El incumplimiento de las restricciones autoriza a ser retirados del balneario sin reembolso y sin derecho a reclamo.
+                <li>Hacer su reservación por internet o vía telefónica en las oficinas de turismo.
+                <li>Prohibido pasar de poza en poza. Se debe permanecer en la poza asignada.
+                <li>Prohibido llevar alimentos y bebidas alcohólicas.
+               
+                </ol> 
+                <h2>RECOMENDACIONES<br>
+                    <ul style="text-align:justify;" >
+                        <li>Es necesario tomar una ducha posterior al uso de los baños termales en sus hogares o hospedajes.`,
+            footer: '<a href=""></a>'
+            })
+        }
+ 
+    </script>
+  
+    
+    <script type="text/javascript">
+        function soloNumerosyletras(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz0123456456789:/.,\@-";
+        especiales = "8-37-39-46-58";
+
+        tecla_especial = false
+        for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+    }
+    function soloNumeros(e){
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla==8){
+            return true;
+        }
+        // Patron de entrada, en este caso solo acepta numeros
+        patron =/[0-9]/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+    function soloLetras(e){
+      key = e.keyCode || e.which;
+      tecla = String.fromCharCode(key).toLowerCase();
+      letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+      especiales = "8-37-39-46";
+      tecla_especial = false
+      for(var i in especiales){
+          if(key == especiales[i]){
+              tecla_especial = true;
+              break;
+          }
+      }
+      if(letras.indexOf(tecla)==-1 && !tecla_especial){
+          return false;
+      }
+  }
+ 
+    </script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" charset="UTF-8"></script>
+    <script src="app.js"></script>
+    <script src="initial.js"></script>
+    <script src="mapper.js"></script>
+    <script src="wz_jsgraphics.js"></script>
+    <script src="imagen.js"></script>
+    <!--add -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.15/vue.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.15/vue.js"></script>
+    <!--    Plugin sweet Alert 2  -->
+    <script src="plugins/sweetAlert2/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="plugins/sweetAlert2/sweetalert2.min.css">
+
+    <script src="plugins/material-datetimepicker/moment-with-locales.min.js "></script>
+    <script src="plugins/material-datetimepicker/bootstrap-material-datetimepicker.js "></script>
+    <script src="plugins/material-datetimepicker/datetimepicker.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.9.0/JsBarcode.all.js"></script>
+    
+    <script src="JsBarcode.all.min.js"></script>
+    <!--por borrar-->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+</body>
+</html>
+
+
+
